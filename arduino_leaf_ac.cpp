@@ -40,19 +40,7 @@ This code is in the Public Domain
 
 #include "arduino_leaf_ac.h"
 
-#define AC_OUTPUT_PIN 1       // This is default pin for Serial1. Code uses a combination of writing to Serial1 and AC_OUTPUT_PIN to function. 
-                              // If different serial port is used check for variable and serial in code
-
-#define AC_INPUT_PIN 2        // This pin should be defined in main code and commented out here
-#define DUMMY_PIN 3           // Not sure of dummy pin. Maybe not dummy, but assist with monitoring?
-#define AC_ON_CMD 0xb3        // Command byte for AC ON
-#define AC_OFF_CMD 0xb2       // Command byte for AC OFF
-#define DEFAULT_AC_KW 0x0c    // 0x0c commands 1.5kW. Current default for ON/OFF but could be passed as same or different variable?
-#define AC_ZERO_KW 0x00       // 0x00 commands 0kW
-#define CKSUM_AC_KW 0xb3      // not sure of quick calculation yet; looks like AC_ON+0x16?
-#define CKSUM_AC_ZERO_KW 0xc1 // 0kW checksum is always 0xc1
-
-
+// Private variables
 static int brklen = 14; // 13 bits + 1 bit for break delimiter
 static uint8_t sync = 0x55;
 static uint8_t addr = 0xfb;
