@@ -1,8 +1,8 @@
 # ArduinoLeafAC
 Control a Leaf AC compressor with Arduino
 
-.h and .cpp files should be placed in the Arduino project folder.
+arduino_leaf_ac.h and arduino_leaf_ac.cpp files should be placed in the Arduino project folder.
 
-.h should be included in the .ino file of your build
+arduino_leaf_ac.h should be included in the .ino file of your build
 
-    #include ".h"
+    #include "arduino_leaf_ac.h"
