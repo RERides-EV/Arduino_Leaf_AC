@@ -60,7 +60,7 @@ static uint8_t AC_KW = DEFAULT_AC_KW  // ox0c commands 1.5kW
 //static uint8_t AC_ZERO_KW = 0x00  // 0x00 commands 0kW
 //static uint8_t CKSUM_AC_KW = 0xb3  // not sure of quick calculation yet; looks like AC_ON+0x16?
 //static uint8_t CKSUM_AC_ZERO_KW = 0xc1 // always for AC_KW at 0kW
-static uint8_t buf[8] = {0xb3, AC_OFF, 0x00, 0x90, 0xFF, 0x00, 0x00, 0x00};  
+static uint8_t buf[8] = {AC_OFF_CMD, AC_ZERO_KW, 0x00, 0x90, 0xFF, 0x00, 0x00, 0x00};  
 static uint8_t cksum = 0xb7;
 static int baud = 19200;
 static uint16_t brk = (brklen*1000000/baud); // brk in microseconds
@@ -87,23 +87,24 @@ void updateAC(bool acEnabled) {                      //  TODO: Add variable mayb
 //      AC_KW = some variable
         
   if (acEnabled) {
-    buf[0] = AC_ON_CMD
+    buf[0] = AC_ON_CMD;
     buf[1] = AC_KW;
     cksum = CKSUM_AC_KW;
     Serial.println("Compressor On Command");
   } else {
-    buf[0] = AC_OFF_CMD
+    buf[0] = AC_OFF_CMD;
     buf[1] = AC_ZERO_KW;
     cksum = CKSUM_AC_ZERO_KW;
     Serial.println("Compressor Off Command");
   }
-}
+
   // Send LIN frame
   sendLINframe();
+}
 
 // Private helper function to send LIN bus commands
 
-static void sendLINframe(); {
+static void sendLINframe() {
   // Signal start of transmission
   digitalWrite(DUMMY_PIN, HIGH);
   
