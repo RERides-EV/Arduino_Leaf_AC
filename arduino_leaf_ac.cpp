@@ -44,7 +44,7 @@ This code is in the Public Domain
 static int brklen = 14; // 13 bits + 1 bit for break delimiter
 static uint8_t sync = 0x55;
 static uint8_t addr = 0xfb;
-static uint8_t AC_KW = DEFAULT_AC_KW  // ox0c commands 1.5kW
+static uint8_t AC_KW = DEFAULT_AC_KW;  // 0x0c commands 1.5kW
 //static uint8_t AC_ZERO_KW = 0x00  // 0x00 commands 0kW
 //static uint8_t CKSUM_AC_KW = 0xb3  // not sure of quick calculation yet; looks like AC_ON+0x16?
 //static uint8_t CKSUM_AC_ZERO_KW = 0xc1 // always for AC_KW at 0kW
@@ -92,7 +92,7 @@ void updateAC(bool acEnabled) {                      //  TODO: Add variable mayb
 
 // Private helper function to send LIN bus commands
 
-static void sendLINframe() {
+void sendLINframe() {
   // Signal start of transmission
   digitalWrite(DUMMY_PIN, HIGH);
   
