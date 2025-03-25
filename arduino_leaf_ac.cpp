@@ -68,12 +68,9 @@ void setupAC() {
   Serial1.begin(baud);
 }
 
-void updateAC(bool acEnabled) {                      //  TODO: Add variable maybe AC_KW to be passed, determined somehow
+void updateAC(bool acEnabled) {                      //  TODO: Add variable maybe currentPowerLevel to be passed, determined somehow
 //  int ac_input_status = digitalRead(AC_INPUT_PIN); //  Determination if AC should be enabled is from main Aruino code and passed via updateAC(digitalRead(AC_INPUT_PIN))
-
-//  if (uint8_t some_variable_for_power)
-//      AC_KW = some variable
-        
+       
   if (acEnabled) {
     buf[0] = AC_ON_CMD;
     buf[1] = currentPowerLevel;
