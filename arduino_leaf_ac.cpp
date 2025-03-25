@@ -1,4 +1,4 @@
-/*  AC Controls from Arduino
+/*  Leaf AC Compressor Controls from Arduino
     Copyright (C) 2025 David Durazzo
     for RERides EV
 
