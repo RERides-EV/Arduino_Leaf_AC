@@ -32,6 +32,6 @@
 void setupAC();
 void updateAC(bool acEnabled);
 void setACPower(uint8_t powerLevel);
-void sendLINframe ();
+static void sendLINframe ();
 
 #endif // ARDUINO_LEAF_AC_H
