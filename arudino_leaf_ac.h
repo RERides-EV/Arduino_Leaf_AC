@@ -1,6 +1,24 @@
-/*  AC Controls from Arduino - Header File
+/*  Leaf AC Compressor Controls from Arduino - Header File
     Copyright (C) 2025 David Durazzo
     for RERides EV
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+Originally developed by "abetanco" 
+https://openinverter.org/forum/viewtopic.php?p=75831#p75831
+
+This code is in the Public Domain
 */
 
 #ifndef ARDUINO_LEAF_AC_H
@@ -8,10 +26,11 @@
 
 #include <Arduino.h>
 
-// Pin definitions - can be changed in main code if needed
-#define AC_OUTPUT_PIN 1       // Must be Serial1 TX pin for proper LIN communication
-#define AC_INPUT_PIN 2        // Input pin to detect when AC should be ON/OFF
-#define DUMMY_PIN 3           // Used for debugging/triggering
+// EXTERNAL Pin declarations - MUST DEFINE IN .INO FILE
+extern int AC_OUTPUT_PIN;       // Must be same as Serial1 TX pin for proper LIN communication
+extern int AC_INPUT_PIN;        // Input pin to detect when AC should be ON/OFF
+extern int DUMMY_PIN;           // Used for debugging/triggering
+
 
 // AC command bytes
 #define AC_ON_CMD 0xb3        // Command byte for AC ON
