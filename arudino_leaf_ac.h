@@ -26,12 +26,6 @@ This code is in the Public Domain
 
 #include <Arduino.h>
 
-// EXTERNAL Pin declarations - MUST DEFINE IN .INO FILE
-extern int AC_OUTPUT_PIN;       // Must be same as Serial1 TX pin for proper LIN communication
-extern int AC_INPUT_PIN;        // Input pin to detect when AC should be ON/OFF
-extern int DUMMY_PIN;           // Used for debugging/triggering
-
-
 // AC command bytes
 #define AC_ON_CMD 0xb3        // Command byte for AC ON
 #define AC_OFF_CMD 0xb2       // Command byte for AC OFF
@@ -48,9 +42,8 @@ extern int DUMMY_PIN;           // Used for debugging/triggering
 #define CKSUM_AC_ZERO_KW 0xc1 // Checksum for AC OFF command
 
 // Function declarations
-void setupAC();
-void updateAC(bool acEnabled);
+void initializeAC(int outputPin, int inputPin, int debugPin);
+void updateAC(bool acEnabled, int outputPin, int debugPin);
 void setACPower(uint8_t powerLevel);
-static void sendLINframe ();
 
 #endif // ARDUINO_LEAF_AC_H
